@@ -1,0 +1,72 @@
+{
+	"info": {
+		"name": "AuthenticationDemo",
+		"_postman_id": "c900f342-ec6e-3249-bcb6-edf48e0d1395",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98e97099-d2d6-4702-b8ec-c637737dc5bc",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"var  jsonData=JSON.parse(responseBody);",
+							"  ",
+							"//tests[\"username\"]=responseBody.has(data.username);",
+							"//tests[\"password\"]=responseBody.has(data.password);",
+							"",
+							" pm.test(\"username\")==responseBody.has(data.username);",
+							" pm.test(\"password\")==responseBody.has(data.username);",
+							"",
+							"",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://postman-echo.com/get?username={{username}}&password={{password}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"equals": true
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

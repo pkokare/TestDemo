@@ -1,0 +1,355 @@
+{
+	"info": {
+		"name": "FirstServiceDemo",
+		"_postman_id": "38d63490-c2fc-703d-26e5-c309cfe597c1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "well_known",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bb33569-ab98-4cb8-9ff3-7e37ace1673f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://usalvwsunmaster.infor.com:29090/authorizationserver/as/v1/.well-known/openid-configuration",
+					"protocol": "https",
+					"host": [
+						"usalvwsunmaster",
+						"infor",
+						"com"
+					],
+					"port": "29090",
+					"path": [
+						"authorizationserver",
+						"as",
+						"v1",
+						".well-known",
+						"openid-configuration"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b392ed2-95f1-45d8-908f-e3f47a130fff",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "lsQl3iz74NG82Vk4KUat",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "NWuNzL8wOJwPK~f6TnEZ",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://usalvwsunmaster.infor.com:29090/authorizationserver/as/v1/api/admin/clients",
+					"protocol": "https",
+					"host": [
+						"usalvwsunmaster",
+						"infor",
+						"com"
+					],
+					"port": "29090",
+					"path": [
+						"authorizationserver",
+						"as",
+						"v1",
+						"api",
+						"admin",
+						"clients"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "register_client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34492262-1d74-43be-b68a-f2e94cb97b52",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData=JSON.parse(responseBody);",
+							"",
+							"pm.environment.set(\"client_id\", jsonData.client_id );",
+							"",
+							"pm.environment.set(\"client_secret\", jsonData.client_secret);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "lsQl3iz74NG82Vk4KUat",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "NWuNzL8wOJwPK~f6TnEZ",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://usalvwsunmaster.infor.com:29090/authorizationserver/as/v1/api/clients/ifs",
+					"protocol": "https",
+					"host": [
+						"usalvwsunmaster",
+						"infor",
+						"com"
+					],
+					"port": "29090",
+					"path": [
+						"authorizationserver",
+						"as",
+						"v1",
+						"api",
+						"clients",
+						"ifs"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get_token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de4555d2-89ee-4af5-b7da-6baaee0be0f7",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData=JSON.parse(responseBody);",
+							"",
+							"",
+							"pm.environment.get(\"client_id\");",
+							"",
+							"",
+							"pm.environment.get(\"client_secret\");",
+							"",
+							"var jsonInfo=JSON.parse(responseBody);",
+							"pm.environment.set(\"access_token\", jsonInfo.access_token);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "Client_Credentials",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"description": "",
+							"type": "text",
+							"warning": ""
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"description": "",
+							"type": "text",
+							"warning": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "https://usalvwsunmaster.infor.com:29090/authorizationserver/as/v1/token",
+					"protocol": "https",
+					"host": [
+						"usalvwsunmaster",
+						"infor",
+						"com"
+					],
+					"port": "29090",
+					"path": [
+						"authorizationserver",
+						"as",
+						"v1",
+						"token"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "info",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "49ba3464-d6bc-4968-80e1-cc2711c861d0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.get(\"access_token\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "28b2d109-eb99-4b96-8e26-4a79335b10e1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://usalvwsunmaster.infor.com:29090/sessionservice/security/sessions/v1/infor/info",
+					"protocol": "https",
+					"host": [
+						"usalvwsunmaster",
+						"infor",
+						"com"
+					],
+					"port": "29090",
+					"path": [
+						"sessionservice",
+						"security",
+						"sessions",
+						"v1",
+						"infor",
+						"info"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
